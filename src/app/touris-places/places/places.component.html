@@ -1,0 +1,14 @@
+<section class="py-5">
+  <div class="container">
+    <div *ngFor="let city of cities" class="city row mb-5 justify-content-between align-items-center">
+      <div class="col-md-4">
+        <img class="w-100" [src]="city.image" alt="">
+      </div>
+      <div class="col-md-7">
+        <h1 class="text-white">{{city.title}}</h1>
+        <p class="text-white lead">{{city.desc}}</p>
+        <a [routerLink]="['../city',city.id]" class="btn btn-success">اشهر الاماكن</a>
+      </div>
+    </div>
+  </div>
+</section>

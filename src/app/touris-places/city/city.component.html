@@ -1,0 +1,18 @@
+<div class="container py-5">
+  <div class="head">
+    <h1 class="text-white fw-bolder">  اشهر الاماكن في مدينه {{city=='cairo'?'القاهره':'' }} {{city == 'alexandria'? 'الاسكندرية':''}} {{city == 'aswan'?'اسوان':''}}</h1>
+  </div>
+  <div class="place-container pt-5">
+      <div *ngFor="let place of places " class="city row mb-5 justify-content-between align-items-center">
+        <div class="col-md-4">
+          <img class="w-100" [src]="place.image" alt="">
+        </div>
+        <div class="col-md-7">
+          <h1 class="text-white">{{place.title}}</h1>
+          <p class="text-white lead">{{place.desc}}</p>
+          <h2 class="text-white">{{place.location}}</h2>
+          <h4 class="text-danger fw-bolder">السعر : {{place.price}}</h4>
+        </div>
+      </div>
+  </div>
+</div>
