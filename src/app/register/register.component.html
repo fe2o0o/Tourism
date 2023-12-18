@@ -4,20 +4,30 @@
       <h1 class="fw-bolder text-white">أنشاء حساب جديد</h1>
     </div>
 
-    <form class="py-5 w-75 mx-auto">
+    <form (ngSubmit)="handleRegister(register)" [formGroup]="register" class="py-5 w-75 mx-auto">
       <div class="form-group mb-4">
         <label class="fw-bolder fs-4 text-white mb-2" for="">الاسم</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control mb-2" formControlName="name">
+        <div *ngIf="register.get('name')?.getError && register.get('name')?.touched">
+          <p *ngIf="register.get('name')?.getError('required')" class="alert alert-danger p-1">الاسم حقل مطلوب </p>
+        </div>
       </div>
       <div class="form-group mb-4">
         <label class="fw-bolder fs-4 text-white mb-2" for="">الايميل</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control mb-2" formControlName="email">
+          <div *ngIf="register.get('email')?.getError && register.get('email')?.touched">
+            <p *ngIf="register.get('email')?.getError('required')" class="alert alert-danger p-1" >الايميل حقل مطلوب</p>
+            <p *ngIf="register.get('email')?.getError('email')" class="alert alert-danger p-1" >هذا الايميل غير صحيح </p>
+          </div>
       </div>
       <div class="form-group mb-4">
         <label class="fw-bolder fs-4 text-white mb-2" for="">الباسورد </label>
-        <input type="password" class="form-control">
+        <input type="password" class="form-control mb-2" formControlName="password">
+          <div *ngIf="register.get('password')?.getError && register.get('password')?.touched">
+            <p *ngIf="register.get('password')?.getError('required')" class="alert alert-danger p-1">الباسورد حقل مطلوب </p>
+          </div>
       </div>
-      <button class="btn btn-success fw-bolder fs-5">انشاء الحساب </button>
+      <button [disabled]="register.invalid" class="btn btn-success fw-bolder fs-5">انشاء الحساب </button>
     </form>
   </div>
 </section>

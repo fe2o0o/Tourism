@@ -7,20 +7,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <li *ngIf="isLogged" class="nav-item">
           <a class="nav-link active" routerLink="home" >الرئيسية</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isLogged" class="nav-item">
           <a class="nav-link" routerLink="about">من نحن</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isLogged" class="nav-item">
           <a class="nav-link " routerLink="places">الاماكن السياحية</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isLogged" class="nav-item">
           <a class="nav-link " routerLink="contactUs">تواصل معنا</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!isLogged" class="nav-item">
           <a class="nav-link btn text-bg-dark " routerLink="login">تسجيل دخول</a>
+        </li>
+        <li *ngIf="isLogged" class="nav-item">
+          <a (click)="logOut()" class="nav-link btn text-bg-danger " >تسجيل خروج</a>
         </li>
       </ul>
     </div>
