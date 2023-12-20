@@ -12,7 +12,32 @@
           <p class="text-white lead">{{place.desc}}</p>
           <h2 class="text-white">{{place.location}}</h2>
           <h4 class="text-danger fw-bolder">السعر : {{place.price}}</h4>
+          <button (click)="book = !book" class="btn btn-light fw-bolder">احجز الان</button>
         </div>
       </div>
   </div>
 </div>
+<section   *ngIf="book" class="position-fixed d-flex align-items-center  bg-opacity-75 top-0 vh-100 bg-dark start-0 w-100">
+  <div class="container position-relative w-75 bg-light rounded-4 py-5">
+    <i (click)="book = false"  class="fa-solid text-danger position-absolute fa-square-xmark"></i>
+    <form >
+      <div class="form-group mb-4">
+        <label class="fw-bolder fs-5 mb-2" for="">الاسم</label>
+        <input [value]="userData.name" type="text" class="form-control">
+      </div>
+      <div class="form-group mb-4">
+        <label class="fw-bolder fs-5 mb-2" for="">الايميل</label>
+        <input [value]="userData.email" type="text" class="form-control">
+      </div>
+      <div class="form-group mb-4">
+        <label class="fw-bolder fs-5 mb-2" for="">رقم الهاتف</label>
+        <input type="tell" class="form-control">
+      </div>
+      <div class="form-group mb-4">
+        <label class="fw-bolder fs-5 mb-2" for="">عدد الافراد</label>
+        <input value="1"  type="number" class="form-control">
+      </div>
+      <button (click)="handleBook()" class="btn btn-success fw-bolder">تأكيد الحجز</button>
+    </form>
+  </div>
+</section>
